@@ -96,10 +96,10 @@ This dataset contains customer demographic information, account details, subscri
 
 ## Data Quality Notes
 
-1. `customerID` should not be used for model training.
-2. `TotalCharges` may contain missing or blank values and should be cleaned before analysis.
-3. Categorical variables must be encoded before machine learning model training.
-4. The target variable `Churn` should be converted into binary format:
+1. `customerID` would not be used for model training.
+2. `TotalCharges` may contain missing or blank values and would be cleaned before analysis.
+3. Categorical variables would be encoded before machine learning model training.
+4. The target variable `Churn` would be converted into binary format:
 
    * Yes → 1
    * No → 0
