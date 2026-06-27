@@ -16,8 +16,7 @@ st.set_page_config(
 
 MODEL_PATH = Path(__file__).parent / "best_rf_model.pkl"
 
-st.write("Model path:", MODEL_PATH)
-st.write("Exists:", MODEL_PATH.exists())
+
 
 @st.cache_resource
 def load_model():
