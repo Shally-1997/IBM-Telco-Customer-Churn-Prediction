@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from pathlib import Path
+
 
 # Page Configuration
 
@@ -12,10 +14,14 @@ st.set_page_config(
 
 # Load Model
 
+MODEL_PATH = Path(__file__).parent / "best_rf_model.pkl"
+
+st.write("Model path:", MODEL_PATH)
+st.write("Exists:", MODEL_PATH.exists())
+
 @st.cache_resource
 def load_model():
-    model = joblib.load("best_rf_model.pkl")
-    return model
+    return joblib.load(MODEL_PATH)
 
 model = load_model()
 
