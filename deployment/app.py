@@ -2,9 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# -------------------------------------------------------
 # Page Configuration
-# -------------------------------------------------------
 
 st.set_page_config(
     page_title="IBM Telco Customer Churn Prediction",
@@ -12,19 +10,16 @@ st.set_page_config(
     layout="wide"
 )
 
-# -------------------------------------------------------
 # Load Model
-# -------------------------------------------------------
 
 @st.cache_resource
 def load_model():
-    return joblib.load("best_rf_model.pkl")
+    model = joblib.load("best_rf_model.pkl")
+    return model
 
 model = load_model()
 
-# -------------------------------------------------------
 # Title
-# -------------------------------------------------------
 
 st.title("📊 IBM Telco Customer Churn Prediction")
 
@@ -38,9 +33,7 @@ their subscription details.
 """
 )
 
-# -------------------------------------------------------
 # Sidebar
-# -------------------------------------------------------
 
 st.sidebar.header("Customer Information")
 
@@ -189,9 +182,7 @@ TotalCharges = st.sidebar.number_input(
     1000.0
 )
 
-# -------------------------------------------------------
 # Feature Engineering
-# -------------------------------------------------------
 
 if tenure <= 12:
     TenureGroup = "0-12"
@@ -230,9 +221,7 @@ ChargePerService = MonthlyCharges / (TotalServices + 1)
 
 High_value_customer = int(MonthlyCharges > 70)
 
-# -------------------------------------------------------
 # Binary Encoding
-# -------------------------------------------------------
 
 gender = 1 if gender=="Male" else 0
 SeniorCitizen = 1 if SeniorCitizen=="Yes" else 0
@@ -241,9 +230,7 @@ Dependents = 1 if Dependents=="Yes" else 0
 PhoneService = 1 if PhoneService=="Yes" else 0
 PaperlessBilling = 1 if PaperlessBilling=="Yes" else 0
 
-# -------------------------------------------------------
 # Input DataFrame
-# -------------------------------------------------------
 
 input_df = pd.DataFrame({
 
@@ -275,9 +262,7 @@ input_df = pd.DataFrame({
 
 })
 
-# -------------------------------------------------------
 # Prediction
-# -------------------------------------------------------
 
 if st.button("Predict Churn"):
 
